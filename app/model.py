@@ -28,9 +28,9 @@ class UserModel(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
-    users_phone_numbers = Column(String, nullable=True) ### New field add kora hoise optional hisabe testing alembic er jonno
+    #users_phone_numbers = Column(String, nullable=True) ### New field add kora hoise optional hisabe testing alembic er jonno
     date=Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
-    testing=Column(String, nullable=True)  ### New field add kora hoise optional hisabe testing alembic er jonno
+    #testing=Column(String, nullable=True)  ### New field add kora hoise optional hisabe testing alembic er jonno
 
 
 class VoteModel(Base):
