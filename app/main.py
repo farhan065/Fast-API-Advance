@@ -34,6 +34,8 @@ from .routers import posts, users, auth, votes
  
 
 app = FastAPI()
+### This would disable the automatic docs generation
+##app = FastAPI(docs_url=None, redoc_url=None)
 
 origins = ["*"]
 
