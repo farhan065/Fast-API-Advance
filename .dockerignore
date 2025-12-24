@@ -1,0 +1,15 @@
+# Ignore local virtual environments
+venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Git history
+.git/
+.gitignore
+
+# Ignore Environment Secrets (Security Risk!)
+.env

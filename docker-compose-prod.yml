@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  api:
+  ### ay jaiga onek vabe configue kora jay ami ekta example dicchi
+    image: farhan014/reponame
+    
+    container_name: FastAPI_Backend_Dev
+    ports:
+      - "80:8000"
+    # volumes:
+    #   - .:/app:ro
+    env_file:
+      - .env
+    depends_on:
+      - db
+    #command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+  
+  db:
+    image: postgres:15-alpine
+    container_name: local_postgres_db
+    restart: always
+    
+    # DEV FEATURE: Expose port so you can check DB with pgAdmin/DBeaver
+    # ports:
+    #   - "5433:5432"
+      
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Saves data even if you stop Docker
+      
+    # MAPPING: Translates your .env names to what Postgres expects
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+
+volumes:
+  postgres_data:
