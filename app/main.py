@@ -57,17 +57,17 @@ app.add_middleware(
 
 ## Database CONNECTION WOULD GO HERE I am using  POSTGRESQL in production. connection for using Raw SQL queries
 
-try:
-    con=psycopg.connect(
-    host="localhost",
-    dbname= "FAST-API",
-    user= "postgres",
-    password= "2004065", row_factory=dict_row)
-    cursor=con.cursor()
-    print("DataBase connection was successful")
-except Exception as error:
-    print("Connecting to database failed")
-    print("Error:", error)
+# try:
+#     con=psycopg.connect(
+#     host="localhost",
+#     dbname= "FAST-API",
+#     user= "postgres",
+#     password= "2004065", row_factory=dict_row)
+#     cursor=con.cursor()
+#     print("DataBase connection was successful")
+# except Exception as error:
+#     print("Connecting to database failed")
+#     print("Error:", error)
     
 ### Creating temporary in-memory database which is a list of dictionaries
 # Using a type hint to specify that my_posts is a list of dictionaries
@@ -83,6 +83,6 @@ app.include_router(votes.router)
 
 
 ### The api will start from GET method then find out forward slash (/) in the url and execute the function below by default method is GET
-@app.get("/")
+@app.get("/", status_code=status.HTTP_200_OK)
 async def read_root():
     return {"Message": "This is my first FastAPI application!!!!"}

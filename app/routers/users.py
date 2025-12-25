@@ -26,7 +26,7 @@ router = APIRouter(
 # ### Using SQLAlchemy ORM
 
 ### Creating User Account which will store email and password and which mean I am using POST method
-@router.post("/", response_model=schemas.UserResponse)
+@router.post("/", response_model=schemas.UserResponse, status_code=status.HTTP_201_CREATED)
 def create_user(new_user: schemas.UserCreate, db: Session = Depends(get_db)):
     # hash the password - new_user.password
     hashed_password = hash_password(new_user.password)
